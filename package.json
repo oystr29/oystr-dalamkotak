@@ -1,0 +1,37 @@
+{
+  "name": "oystr-dalamkotak",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "astro": "astro",
+    "sync": "astro sync",
+    "build": "bun run fix && astro build",
+    "check": "bun run check.fmt && bun run check.lint && astro check",
+    "check.fmt": "prettier --check .",
+    "check.lint": "eslint \"**/*.{js,jsx,ts,tsx,astro}\"",
+    "dev": "astro dev",
+    "fix": "bun run lint && bun run fmt",
+    "fmt": "prettier --write .",
+    "lint": "eslint --fix \"**/*.{js,jsx,ts,tsx,astro}\"",
+    "lint.dry-run": "eslint --fix-dry-run \"**/*.{js,jsx,ts,tsx,astro}\"",
+    "preview": "bun run build && astro preview",
+    "prod": "bun run check && astro build",
+    "start": "astro dev --open"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@builder.io/qwik": "^1.12",
+    "@qwikdev/astro": "^0.7",
+    "astro": "^5.1"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.34.0",
+    "eslint-plugin-qwik": "^1.5.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0"
+  }
+}
