@@ -1,0 +1,36 @@
+.chat_bubble {
+  --radius-field: 0.25rem;
+  --color-base-300: oklch(95% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+  background-color: var(--color-base-300);
+  width: fit-content;
+  color: var(--color-base-content);
+  grid-row-end: 3;
+  min-width: 2.5rem;
+  max-width: 90%;
+  min-height: 2rem;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  display: block;
+  position: relative;
+}
+
+.chat_bubble::before {
+  --mask-chat: url("data:image/svg+xml,%3csvg width='13' height='13' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill='black' d='M0 11.5004C0 13.0004 2 13.0004 2 13.0004H12H13V0.00036329L12.5 0C12.5 0 11.977 2.09572 11.8581 2.50033C11.6075 3.35237 10.9149 4.22374 9 5.50036C6 7.50036 0 10.0004 0 11.5004Z'/%3e%3c/svg%3e");
+  inset-inline-start: 100%;
+  transform: rotateY(180deg);
+  background-color: inherit;
+  content: '';
+  width: 0.75rem;
+  height: 0.75rem;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: var(--mask-chat);
+  mask-image: var(--mask-chat);
+  position: absolute;
+  bottom: 0;
+  -webkit-mask-position: 0 -1px;
+  mask-position: 0 -1px;
+  -webkit-mask-size: 13px;
+  mask-size: 13px;
+}

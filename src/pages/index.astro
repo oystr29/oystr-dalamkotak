@@ -18,14 +18,14 @@ import Unmul from '~/components/icon/unmul.astro';
   </head>
   <body>
     <main
-      class="container mx-auto py-5 px-4 sm:px-0 text-sm md:text-base pb-20"
+      class="container mx-auto py-5 px-4 sm:px-0 text-sm md:text-base pb-20 relative"
     >
       <section class="w-full flex items-center justify-center mb-20">
         <div class="flex gap-4 flex-col items-center">
           <Image
             src={Me}
             alt="Me"
-            class={'rounded-full min-h-40 min-w-40 max-h-40 max-w-40 h-full w-full object-cover grayscale hover:grayscale-0'}
+            class={'rounded-full min-h-40 min-w-40 w-full h-full max-h-40 max-w-40 h-full w-full object-cover grayscale hover:grayscale-0'}
           />
           <div class="flex items-center flex-col gap-1 relative">
             <p
@@ -45,8 +45,8 @@ import Unmul from '~/components/icon/unmul.astro';
           </div>
         </div>
       </section>
-      <section class="mb-14">
-        <h2 class="text-3xl font-semibold mb-2">About me</h2>
+      <section class="mb-14 observe about">
+        <h2 class="text-xl md:text-3xl font-semibold mb-2">About me</h2>
         <div class="text-gray-700 space-y-1">
           <p>
             My name is <span class="font-semibold">Oktavian Yoga Syahputra</span
@@ -77,16 +77,18 @@ import Unmul from '~/components/icon/unmul.astro';
         </div>
       </section>
       <section class="mb-14">
-        <h2 class="h2">Experience</h2>
-        <div class="text-gray-700 space-y-1">
+        <h2 class="text-xl md:text-3xl font-semibold mb-2 observe experience">
+          Experience
+        </h2>
+        <div class="text-gray-700 space-y-1 pl-2.5">
           <ol class="relative border-s border-gray-200 dark:border-gray-700">
-            <li class="mb-10 ms-6">
+            <li class="mb-10 ms-6 observe hktekno">
               <span
-                class="absolute flex items-center justify-center w-7 h-7 rounded-full -start-3.5 ring-8 ring-white"
+                class="absolute flex items-center justify-center w-5 h-5 md:w-7 md:h-7 rounded-full -start-2.5 top-1 md:-start-3.5 ring-8 ring-white"
               >
                 <Hktekno />
               </span>
-              <p class="flex items-center mb-1 text-lg">
+              <p class="flex items-center mb-1 text-base md:text-lg flex-wrap">
                 <span class="font-semibold text-gray-900"
                   >Software Developer</span
                 >
@@ -98,7 +100,7 @@ import Unmul from '~/components/icon/unmul.astro';
                 >
               </p>
               <time
-                class="block mb-2 text-sm font-normal leading-none text-gray-600"
+                class="block mb-2 text-sm md:text-base font-normal leading-none text-gray-600"
                 >October 2022 - Present</time
               >
               <ul class="list-disc list-inside space-y-1">
@@ -161,13 +163,13 @@ import Unmul from '~/components/icon/unmul.astro';
                 </li>
               </ul>
             </li>
-            <li class="mb-10 ms-6">
+            <li class="mb-10 ms-6 observe pertamina">
               <span
                 class="absolute flex items-center justify-center w-7 h-7 rounded-full -start-3.5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900"
               >
                 <Pertamina />
               </span>
-              <p class="flex items-center mb-1 text-lg">
+              <p class="flex items-center mb-1 text-base md:text-lg flex-wrap">
                 <span class="font-semibold text-gray-900"
                   >Intern IT Support</span
                 >
@@ -188,13 +190,13 @@ import Unmul from '~/components/icon/unmul.astro';
                 CCTV, radio, and many more.
               </p>
             </li>
-            <li class="ms-6">
+            <li class="ms-6 observe unmul">
               <span
                 class="absolute flex items-center justify-center w-7 h-7 rounded-full -start-3.5 ring-8 ring-white"
               >
                 <Unmul />
               </span>
-              <p class="flex items-center mb-1 text-lg">
+              <p class="flex items-center mb-1 text-base md:text-lg flex-wrap">
                 <span class="font-semibold text-gray-900"
                   >Laboratory Assistant</span
                 >
@@ -234,8 +236,10 @@ import Unmul from '~/components/icon/unmul.astro';
           </ol>
         </div>
       </section>
-      <section>
-        <h2 class="h2">Skills</h2>
+      <section class="text-xl md:text-3xl font-semibold mb-2 observe skill">
+        <h2 class="text-xl md:text-3xl font-semibold mb-2 observe experience">
+          Skills
+        </h2>
         <div class="space-y-4">
           <div
             class="flex gap-2 shadow-[0px_0px_5px_3px_rgba(0,_0,_0,_0.1)] rounded px-4 py-2 hover:shadow-[inset_0px_0px_5px_3px_rgba(0,_0,_0,_0.1)]"
@@ -269,8 +273,10 @@ import Unmul from '~/components/icon/unmul.astro';
               >
             </svg>
             <div class="space-y-0.5">
-              <p class="font-bold text-xl">Javascript/Typescript</p>
-              <p class="text-sm text-gray-800">
+              <p class="font-semibold md:font-bold text-lg md:text-xl">
+                Javascript/Typescript
+              </p>
+              <p class="text-xs md:text-sm text-gray-800">
                 <span class="text-gray-500">Keyword:</span>
                 <a
                   target="_blank"
@@ -333,8 +339,8 @@ import Unmul from '~/components/icon/unmul.astro';
               ></path></svg
             >
             <div>
-              <p class="font-bold text-xl">Linux</p>
-              <p class="text-sm text-gray-500">
+              <p class="font-semibold md:font-bold text-lg md:text-xl">Linux</p>
+              <p class="text-xs md:text-sm text-gray-500">
                 Keyword: <span class="text-gray-800">Bash, Grep, Hyprland</span>
               </p>
             </div>
@@ -403,8 +409,10 @@ import Unmul from '~/components/icon/unmul.astro';
               ></svg
             >
             <div>
-              <p class="font-bold text-xl">Neovim</p>
-              <p class="text-sm text-gray-500">
+              <p class="font-semibold md:font-bold text-lg md:text-xl">
+                Neovim
+              </p>
+              <p class="text-xs md:text-sm text-gray-500">
                 Keyword: <span class="text-gray-800"
                   >LSP, Linter, Formatter, Mason, Lua</span
                 >
@@ -416,13 +424,3 @@ import Unmul from '~/components/icon/unmul.astro';
     </main>
   </body>
 </html>
-
-<style>
-  .h2 {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
-    --tw-font-weight: var(--font-weight-semibold);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: calc(var(--spacing) * 3);
-  }
-</style>
