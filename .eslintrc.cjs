@@ -7,11 +7,11 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    // "plugin:@typescript-eslint/recommended",
+    'plugin:@typescript-eslint/recommended',
     'plugin:qwik/recommended',
     'plugin:astro/recommended',
   ],
-  // parser: '@typescript-eslint/parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
