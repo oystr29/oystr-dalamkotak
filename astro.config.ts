@@ -1,11 +1,12 @@
 // @ts-check
-import qwikdev from '@qwikdev/astro';
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+import solidJs from '@astrojs/solid-js';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [qwikdev()],
+  integrations: [solidJs()],
   vite: {
     plugins: [tailwindcss()],
   },

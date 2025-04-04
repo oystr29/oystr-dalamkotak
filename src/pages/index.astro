@@ -1,11 +1,18 @@
 ---
-import '../styles/global.css';
-import { Image } from 'astro:assets';
-import Me from '~/assets/img/me.jpg';
-import Carousel from '~/components/carousel/carousel';
-import Hktekno from '~/components/icon/hktekno.astro';
-import Pertamina from '~/components/icon/pertamina.astro';
-import Unmul from '~/components/icon/unmul.astro';
+import "../styles/global.css";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Me from "~/assets/img/me.jpg";
+
+import Skills from "~/components/skills.astro";
+import About from "~/components/about.astro";
+import Experience from "~/components/experience.astro";
+
+const collectionProjects = await getCollection("projects");
+const projects = collectionProjects.sort(
+  (a, b) =>
+    Date.parse(b.data.date.toString()) - Date.parse(a.data.date.toString()),
+);
 ---
 
 <html lang="en">
@@ -19,26 +26,26 @@ import Unmul from '~/components/icon/unmul.astro';
   </head>
   <body>
     <main
-      class="container mx-auto py-5 px-4 sm:px-0 text-sm md:text-base pb-20 relative"
+      class="relative container mx-auto px-4 py-5 pb-20 text-sm sm:px-0 md:text-base"
     >
-      <section class="w-full flex items-center justify-center mb-20">
-        <div class="flex gap-4 flex-col items-center">
+      <section class="mb-20 flex w-full items-center justify-center">
+        <div class="flex flex-col items-center gap-4">
           <Image
             src={Me}
             alt="Me"
-            class={'rounded-full min-h-40 min-w-40 w-full h-full max-h-40 max-w-40 object-cover grayscale hover:grayscale-0'}
+            class={"rounded-full min-h-40 min-w-40 w-full h-full max-h-40 max-w-40 object-cover grayscale hover:grayscale-0"}
           />
-          <div class="flex items-center flex-col gap-1 relative">
+          <div class="relative flex flex-col items-center gap-1">
             <p
-              class="absolute text-sm md:text-base -top-5 right-0 text-gray-600"
+              class="absolute -top-5 right-0 text-sm text-gray-600 md:text-base"
             >
               @oystr
             </p>
-            <h1 class="text-gray-900 text-xl lg:text-5xl font-bold mb-1">
+            <h1 class="mb-1 text-xl font-bold text-gray-900 lg:text-5xl">
               Oktavian Yoga Syahputra
             </h1>
-            <p class="text-lg md:text-xl font-medium">
-              I'm a Software Deve<span class="text-red-900 animate-pulse"
+            <p class="text-lg font-medium md:text-xl">
+              I'm a Software Deve<span class="animate-pulse text-red-900"
                 >lover</span
               >
               <span class="animate-pulse">❤️</span>
@@ -46,391 +53,240 @@ import Unmul from '~/components/icon/unmul.astro';
           </div>
         </div>
       </section>
-      <section class="mb-14 observe about">
-        <h2 class="text-xl md:text-3xl font-semibold mb-2">About me</h2>
-        <div class="text-gray-700 space-y-1">
-          <p>
-            My name is <span class="font-semibold">Oktavian Yoga Syahputra</span
-            >. I was born in Sangasanga sub-district, Kutai Kartanegara
-            district, East Kalimantan province, Indonesia 🇮🇩
-          </p>
-          <p>
-            I'm always be a kind of <span class="font-semibold"
-              >person who like to learn anything</span
-            >, mostly
-            <span class="font-semibold">learn by doing</span>.
-          </p>
-          <p>
-            For example, when I first learned web proramming, I didn't code with
-            just <span class="line-through">HTML, CSS, Javascript</span>. I went
-            straight up using <a
-              target="_blank"
-              href="https://gohugo.io/"
-              class="font-semibold underline">Hugo</a
-            > at that time
-          </p>
-          <p>
-            Right now, I'm really deep dive into <span class="font-semibold"
-              >Javascript Ecosystem</span
-            > on all platform like Web & Mobile, but also learning all the libraries,
-            frameworks and all of dramas it has.
-          </p>
-        </div>
-      </section>
-      <section class="mb-14">
-        <h2 class="text-xl md:text-3xl font-semibold mb-2 observe experience">
-          Experience
-        </h2>
-        <div class="text-gray-700 space-y-1 pl-2.5">
-          <ol class="relative border-s border-gray-200 dark:border-gray-700">
-            <li class="mb-10 ms-6 observe hktekno">
-              <span
-                class="absolute translate-y-1 flex items-center justify-center w-5 h-5 md:w-7 md:h-7 rounded-full -start-2.5 md:-start-3.5 ring-8 ring-white"
-              >
-                <Hktekno />
-              </span>
-              <p class="flex items-center mb-1 text-base md:text-lg flex-wrap">
-                <span class="font-semibold text-gray-900"
-                  >Software Developer</span
-                >
-                <span class="mx-1">at</span>
-                <a
-                  href="https://hktekno.com/"
-                  target="_blank"
-                  class="font-semibold text-sky-700 underline">HK Teknologi</a
-                >
-              </p>
-              <time
-                class="block mb-2 text-sm md:text-base font-normal leading-none text-gray-600"
-                >October 2022 - Present</time
-              >
-              <ul class="list-disc list-inside space-y-1">
-                <li>
-                  Frontend Developer of <a
-                    target="_blank"
-                    class="underline font-medium"
-                    href="https://smexpo.pertamina.com/">SMEXPO Pertamina</a
-                  > 2023 using <a
-                    target="_blank"
-                    href="https://laravel.com/"
-                    class="underline font-medium">Laravel</a
-                  > and <a
-                    target="_blank"
-                    class="underline font-medium"
-                    href="https://v3.tailwindcss.com/">Tailwind CSS</a
-                  >
-                </li>
-                <li>
-                  Built an inventory desktop app for <a
-                    href="https://maps.app.goo.gl/veB3N23ABTgysm8fA"
-                    target="_blank"
-                    class="underline font-medium">PT. Mutiara Etam Coal</a
-                  > using <a
-                    href="https://electron-vite.org/"
-                    target="_blank"
-                    class="underline font-medium"
-                    >Electron + React + Tailwindcss</a
-                  >.
-                </li>
-                <li>
-                  Made an internal office Task Management App called weekcan
-                  using <a
-                    href="https://nextjs.org/"
-                    target="_blank"
-                    class="underline font-medium">NextJS</a
-                  > for the web and <a
-                    href="https://expo.dev/"
-                    target="_blank"
-                    class="underline font-medium">React Native</a
-                  > for the mobile.
-                </li>
-                <li>
-                  Mobile developer of Bazzar Store app using <a
-                    href="https://expo.dev/"
-                    target="_blank"
-                    class="underline font-medium">React Native</a
-                  >.
-                </li>
-                <li>
-                  Full Stack Developer of Sosmed Sentiment Analysis app using <a
-                    href="https://reactrouter.com/home"
-                    target="_blank"
-                    class="underline font-medium">React Router 7</a
-                  > for the frontend and <a
-                    href="https://adonisjs.com"
-                    target="_blank"
-                    class="underline font-medium">AdonisJS</a
-                  > for the backend.
-                </li>
-              </ul>
-            </li>
-            <li class="mb-10 ms-6 observe pertamina">
-              <span
-                class="absolute flex items-center justify-center translate-y-1 w-5 h-5 md:w-7 md:h-7 rounded-full -start-2.5 md:-start-3.5 ring-8 ring-white"
-              >
-                <Pertamina />
-              </span>
-              <p class="flex items-center mb-1 text-base md:text-lg flex-wrap">
-                <span class="font-semibold text-gray-900"
-                  >Intern IT Support</span
-                >
-                <span class="mx-1">at</span>
-                <a
-                  href="https://maps.app.goo.gl/ByFdN3hxGEezcLix8"
-                  target="_blank"
-                  class="font-semibold text-red-600 underline"
-                  >Pertamina EP Sangasanga</a
-                >
-              </p>
-              <time
-                class="block mb-2 text-sm font-normal leading-none text-gray-600"
-                >September 2022</time
-              >
-              <p class="">
-                Learn all of things that IT Support do, like manage a server,
-                CCTV, radio, and many more.
-              </p>
-            </li>
-            <li class="ms-6 observe unmul">
-              <span
-                class="absolute translate-y-1 flex items-center justify-center w-5 h-5 md:w-7 md:h-7 rounded-full -start-2.5 md:-start-3.5 ring-8 ring-white"
-              >
-                <Unmul />
-              </span>
-              <p class="flex items-center mb-1 text-base md:text-lg flex-wrap">
-                <span class="font-semibold text-gray-900"
-                  >Laboratory Assistant</span
-                >
-                <span class="mx-1">at</span>
-                <a
-                  href="https://informatika.ft.unmul.ac.id/"
-                  target="_blank"
-                  class="font-semibold text-green-700 underline"
-                  >Mulawarman University</a
-                >
-              </p>
 
-              <time
-                class="block mb-2 text-sm font-normal leading-none text-gray-600"
-                >January 2022 - Mei 2023</time
-              >
+      <About />
 
-              <p class="">
-                As a Laboratory Assisstant, I teach the techincal thing of some
-                subject.
-                <ul class="list-disc list-inside">
-                  <li>
-                    On Mobile Programming Subject, I taught the students about
-                    Flutter
-                  </li>
-                  <li>
-                    On Framework Based Programming Subject, I taught the
-                    students about Laravel
-                  </li>
-                  <li>
-                    On Operating System Subject, I taught the students about
-                    Linux
-                  </li>
-                </ul>
-              </p>
-            </li>
-          </ol>
-        </div>
-      </section>
+      <Experience />
 
       <!-- Skills  -->
-      <section class="text-xl md:text-3xl font-semibold observe skill mb-14">
-        <h2 class="text-xl md:text-3xl font-semibold mb-2 observe experience">
-          Skills
-        </h2>
-        <div class="space-y-4">
-          <div
-            class="flex gap-2 shadow-[0px_0px_5px_3px_rgba(0,_0,_0,_0.1)] rounded px-4 py-2 hover:shadow-[inset_0px_0px_5px_3px_rgba(0,_0,_0,_0.1)]"
-          >
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <!-- JavaScript Side -->
-              <rect x="0" y="0" width="24" height="48" fill="#F7DF1E"></rect>
-              <text
-                x="6"
-                y="30"
-                font-family="Arial, sans-serif"
-                font-size="12"
-                font-weight="bold"
-                fill="#000">JS</text
-              >
+      <Skills />
 
-              <!-- TypeScript Side -->
-              <rect x="24" y="0" width="24" height="48" fill="#3178C6"></rect>
-              <text
-                x="28"
-                y="30"
-                font-family="Arial, sans-serif"
-                font-size="12"
-                font-weight="bold"
-                fill="#FFF">TS</text
-              >
-            </svg>
-            <div class="space-y-0.5">
-              <p class="font-semibold md:font-bold text-lg md:text-xl">
-                Javascript/Typescript
-              </p>
-              <p class="text-xs md:text-sm text-gray-800">
-                <span class="text-gray-500">Keyword:</span>
-                <a
-                  target="_blank"
-                  class="underline hover:font-semibold"
-                  href="https://react.dev/">React</a
-                >,
-                <a
-                  target="_blank"
-                  href="https://bestofjs.org/projects?tags=framework"
-                  class="underline hover:font-semibold">UI Framework</a
-                >,
-                <a
-                  target="_blank"
-                  href="https://tanstack.com/"
-                  class="underline hover:font-semibold">Tanstack</a
-                >
-              </p>
-            </div>
-          </div>
-          <div
-            class="flex gap-2 shadow-[0px_0px_5px_3px_rgba(0,_0,_0,_0.1)] rounded px-4 py-2 hover:shadow-[inset_0px_0px_5px_3px_rgba(0,_0,_0,_0.1)]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={48}
-              height={48}
-              viewBox="0 0 48 48"
-              ><path
-                fill="#eceff1"
-                d="m20.1 16.2l.1 2.3l-1.6 3l-2.5 4.9l-.5 4.1l1.8 5.8l4.1 2.3h6.2l5.8-4.4l2.6-6.9l-6-7.3l-1.7-4.1z"
-              ></path><path
-                fill="#263238"
-                d="M34.3 21.9c-1.6-2.3-2.9-3.7-3.6-6.6s.2-2.1-.4-4.6c-.3-1.3-.8-2.2-1.3-2.9c-.6-.7-1.3-1.1-1.7-1.2c-.9-.5-3-1.3-5.6.1c-2.7 1.4-2.4 4.4-1.9 10.5c0 .4-.1.9-.3 1.3c-.4.9-1.1 1.7-1.7 2.4c-.7 1-1.4 2-1.9 3.1c-1.2 2.3-2.3 5.2-2 6.3c.5-.1 6.8 9.5 6.8 9.7c.4-.1 2.1-.1 3.6-.1c2.1-.1 3.3-.2 5 .2c0-.3-.1-.6-.1-.9c0-.6.1-1.1.2-1.8c.1-.5.2-1 .3-1.6c-1 .9-2.8 1.9-4.5 2.2c-1.5.3-4-.2-5.2-1.7c.1 0 .3 0 .4-.1c.3-.1.6-.2.7-.4c.3-.5.1-1-.1-1.3s-1.7-1.4-2.4-2s-1.1-.9-1.5-1.3l-.8-.8c-.2-.2-.3-.4-.4-.5c-.2-.5-.3-1.1-.2-1.9c.1-1.1.5-2 1-3c.2-.4.7-1.2.7-1.2s-1.7 4.2-.8 5.5c0 0 .1-1.3.5-2.6c.3-.9.8-2.2 1.4-2.9s2.1-3.3 2.2-4.9c0-.7.1-1.4.1-1.9c-.4-.4 6.6-1.4 7-.3c.1.4 1.5 4 2.3 5.9c.4.9.9 1.7 1.2 2.7c.3 1.1.5 2.6.5 4.1c0 .3 0 .8-.1 1.3c.2 0 4.1-4.2-.5-7.7c0 0 2.8 1.3 2.9 3.9c.1 2.1-.8 3.8-1 4.1c.1 0 2.1.9 2.2.9c.4 0 1.2-.3 1.2-.3c.1-.3.4-1.1.4-1.4c.7-2.3-1-6-2.6-8.3"
-              ></path><g fill="#eceff1" transform="translate(0 -2)"
-                ><ellipse cx={21.6} cy={15.3} rx={1.3} ry={2}></ellipse><ellipse
-                  cx={26.1}
-                  cy={15.2}
-                  rx={1.7}
-                  ry={2.3}></ellipse></g
-              ><g fill="#212121" transform="translate(0 -2)"
-                ><ellipse
-                  cx={21.7}
-                  cy={15.5}
-                  rx={1.2}
-                  ry={0.7}
-                  transform="rotate(-97.204 21.677 15.542)"></ellipse><ellipse
-                  cx={26}
-                  cy={15.6}
-                  rx={1}
-                  ry={1.3}></ellipse></g
-              ><path
-                fill="#ffc107"
-                d="M39.3 35.6c-.4-.2-1.1-.5-1.7-1.4c-.3-.5-.2-1.9-.7-2.5c-.3-.4-.7-.2-.8-.2c-.9.2-3 1.6-4.4 0c-.2-.2-.5-.5-1-.5s-.7.2-.9.6s-.2.7-.2 1.7c0 .8 0 1.7-.1 2.4c-.2 1.7-.5 2.7-.5 3.7c0 1.1.3 1.8.7 2.1c.3.3.8.5 1.9.5s1.8-.4 2.5-1.1c.5-.5.9-.7 2.3-1.7c1.1-.7 2.8-1.6 3.1-1.9c.2-.2.5-.3.5-.9c0-.5-.4-.7-.7-.8m-20.1.3c-1-1.6-1.1-1.9-1.8-2.9c-.6-1-1.9-2.9-2.7-2.9c-.6 0-.9.3-1.3.7s-.8 1.3-1.5 1.8c-.6.5-2.3.4-2.7 1s.4 1.5.4 3c0 .6-.5 1-.6 1.4c-.1.5-.2.8 0 1.2c.4.6.9.8 4.3 1.5c1.8.4 3.5 1.4 4.6 1.5s3 0 3-2.7c.1-1.6-.8-2-1.7-3.6m1.9-18.1c-.6-.4-1.1-.8-1.1-1.4s.4-.8 1-1.3c.1-.1 1.2-1.1 2.3-1.1s2.4.7 2.9.9c.9.2 1.8.4 1.7 1.1c-.1 1-.2 1.2-1.2 1.7c-.7.2-2 1.3-2.9 1.3c-.4 0-1 0-1.4-.1c-.3-.1-.8-.6-1.3-1.1"
-              ></path><path
-                fill="#634703"
-                d="M20.9 17c.2.2.5.4.8.5c.2.1.5.2.5.2h.9c.5 0 1.2-.2 1.9-.6c.7-.3.8-.5 1.3-.7c.5-.3 1-.6.8-.7s-.4 0-1.1.4c-.6.4-1.1.6-1.7.9c-.3.1-.7.3-1 .3h-.9c-.3 0-.5-.1-.8-.2c-.2-.1-.3-.2-.4-.2c-.2-.1-.6-.5-.8-.6c0 0-.2 0-.1.1zm3-2.2c.1.2.3.2.4.3s.2.1.2.1c.1-.1 0-.3-.1-.3c0-.2-.5-.2-.5-.1m-1.6.2c0 .1.2.2.2.1c.1-.1.2-.2.3-.2c.2-.1.1-.2-.2-.2c-.2.1-.2.2-.3.3"
-              ></path><path
-                fill="#455a64"
-                d="M32 32.7v.3c.2.4.7.5 1.1.5c.6 0 1.2-.4 1.5-.8c0-.1.1-.2.2-.3c.2-.3.3-.5.4-.6c0 0-.1-.1-.1-.2c-.1-.2-.4-.4-.8-.5c-.3-.1-.8-.2-1-.2c-.9-.1-1.4.2-1.7.5c0 0 .1 0 .1.1c.2.2.3.4.3.7c.1.2 0 .3 0 .5"
-              ></path></svg
-            >
-            <div>
-              <p class="font-semibold md:font-bold text-lg md:text-xl">Linux</p>
-              <p class="text-xs md:text-sm text-gray-500">
-                Keyword: <span class="text-gray-800">Bash, Grep, Hyprland</span>
-              </p>
-            </div>
-          </div>
-          <div
-            class="flex gap-2 shadow-[0px_0px_5px_3px_rgba(0,_0,_0,_0.1)] rounded px-4 py-2 hover:shadow-[inset_0px_0px_5px_3px_rgba(0,_0,_0,_0.1)]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 128 128"
-              ><defs
-                ><linearGradient
-                  id="deviconNeovim0"
-                  x1=".5"
-                  x2=".5"
-                  y1="0"
-                  y2="1"
-                  gradientTransform="matrix(32.95703 0 0 154.72266 .426 .426)"
-                  gradientUnits="userSpaceOnUse"
-                  ><stop offset="0" stop-color="#16b0ed" stop-opacity="0.8"
-                  ></stop><stop
-                    offset="1"
-                    stop-color="#0f59b2"
-                    stop-opacity="0.835"></stop></linearGradient
-                ><linearGradient
-                  id="deviconNeovim1"
-                  x1=".5"
-                  x2=".5"
-                  y1="0"
-                  y2="1"
-                  gradientTransform="matrix(-33.59375 0 0 154.72266 128 .426)"
-                  gradientUnits="userSpaceOnUse"
-                  ><stop offset="0" stop-color="#7db643"></stop><stop
-                    offset="1"
-                    stop-color="#367533"></stop></linearGradient
-                ><linearGradient
-                  id="deviconNeovim2"
-                  x1=".5"
-                  x2=".5"
-                  y1="0"
-                  y2="1"
-                  gradientTransform="matrix(109.71484 0 0 154.72656 9.355 .637)"
-                  gradientUnits="userSpaceOnUse"
-                  ><stop offset="0" stop-color="#88c649" stop-opacity="0.8"
-                  ></stop><stop
-                    offset="1"
-                    stop-color="#439240"
-                    stop-opacity="0.839"></stop></linearGradient
-                ></defs
-              ><g fill-rule="evenodd"
-                ><path
-                  fill="url(#deviconNeovim0)"
-                  d="M.426 33.703L33.383.426v154.722L.426 122.258Zm0 0"
-                  transform="translate(10.95 -.352)scale(.82614)"></path><path
-                  fill="url(#deviconNeovim1)"
-                  d="M127.773 34L94.406.426l.676 154.722L128 122.254Zm0 0"
-                  transform="translate(10.95 -.352)scale(.82614)"></path><path
-                  fill="url(#deviconNeovim2)"
-                  d="m33.379.637l85.691 130.75l-23.98 23.976L9.355 24.903Zm0 0"
-                  transform="translate(10.95 -.352)scale(.82614)"></path><path
-                  fill-opacity="0.129"
-                  d="m38.53 50.01l-.04 4.244l-21.743-32.18l2.014-2.06zm0 0"
-                ></path></g
-              ></svg
-            >
-            <div>
-              <p class="font-semibold md:font-bold text-lg md:text-xl">
-                Neovim
-              </p>
-              <p class="text-xs md:text-sm text-gray-500">
-                Keyword: <span class="text-gray-800"
-                  >LSP, Linter, Formatter, Mason, Lua</span
-                >
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="text-xl md:text-3xl font-semibold mb-2 observe skill">
-        <h2 class="text-xl md:text-3xl font-semibold mb-2 observe experience">
+      <section class="observe skill mb-2 text-xl font-semibold md:text-3xl">
+        <h2 class="observe experience mb-4 text-xl font-semibold md:text-3xl">
           Projects
         </h2>
-        <Carousel />
+
+        <div class="embla">
+          <div class="embla__viewport">
+            <div class="embla__container">
+              {
+                projects.map((project) => {
+                  const data = project.data;
+                  return (
+                    <div class="embla__slide">
+                      <div class="relative h-full w-full rounded-lg border shadow-lg select-none">
+                        <Image
+                          src={project.data.img ?? ""}
+                          class={"h-full w-full rounded-lg object-cover"}
+                          alt={project.data.slug}
+                        />
+                        <div class="absolute top-0 left-0 h-full w-full rounded-lg bg-black/70 px-3 py-3 text-base text-white">
+                          <div class="flex items-start justify-between">
+                            <div>
+                              <p class="text-xl font-semibold">
+                                {project.data.name}
+                              </p>
+                              <p class="text-sm font-normal">
+                                {project.data.desc}
+                              </p>
+                            </div>
+                            {(data.web || data.repo) && (
+                              <div class="flex items-center gap-3">
+                                {data.web && (
+                                  <a href={data.web} target="_blank">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="32"
+                                      height="32"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        fill="currentColor"
+                                        d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2"
+                                      />
+                                    </svg>
+                                  </a>
+                                )}
+                                {data.repo && (
+                                  <a href={data.repo} target="_blank">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="32"
+                                      height="32"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        fill="currentColor"
+                                        d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
+                                      />
+                                    </svg>
+                                  </a>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+
+          <div class="embla__controls">
+            <div class="embla__buttons">
+              <button class="embla__button embla__button--prev" type="button">
+                <svg class="embla__button__svg" viewBox="0 0 532 532">
+                  <path
+                    fill="currentColor"
+                    d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+                  ></path>
+                </svg>
+              </button>
+
+              <button class="embla__button embla__button--next" type="button">
+                <svg class="embla__button__svg" viewBox="0 0 532 532">
+                  <path
+                    fill="currentColor"
+                    d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="embla__dots"></div>
+          </div>
+        </div>
       </section>
     </main>
   </body>
 </html>
+<script>
+  import EmblaCarousel, {
+    type EmblaCarouselType,
+    type EmblaOptionsType,
+  } from "embla-carousel";
+
+  const addTogglePrevNextBtnsActive = (
+    emblaApi: EmblaCarouselType,
+    prevBtn: HTMLElement,
+    nextBtn: HTMLElement,
+  ): (() => void) => {
+    const togglePrevNextBtnsState = (): void => {
+      if (emblaApi.canScrollPrev()) prevBtn.removeAttribute("disabled");
+      else prevBtn.setAttribute("disabled", "disabled");
+
+      if (emblaApi.canScrollNext()) nextBtn.removeAttribute("disabled");
+      else nextBtn.setAttribute("disabled", "disabled");
+    };
+
+    emblaApi
+      .on("select", togglePrevNextBtnsState)
+      .on("init", togglePrevNextBtnsState)
+      .on("reInit", togglePrevNextBtnsState);
+
+    return (): void => {
+      prevBtn.removeAttribute("disabled");
+      nextBtn.removeAttribute("disabled");
+    };
+  };
+
+  export const addPrevNextBtnsClickHandlers = (
+    emblaApi: EmblaCarouselType,
+    prevBtn: HTMLElement,
+    nextBtn: HTMLElement,
+  ): (() => void) => {
+    const scrollPrev = (): void => {
+      emblaApi.scrollPrev();
+    };
+    const scrollNext = (): void => {
+      emblaApi.scrollNext();
+    };
+    prevBtn.addEventListener("click", scrollPrev, false);
+    nextBtn.addEventListener("click", scrollNext, false);
+
+    const removeTogglePrevNextBtnsActive = addTogglePrevNextBtnsActive(
+      emblaApi,
+      prevBtn,
+      nextBtn,
+    );
+
+    return (): void => {
+      removeTogglePrevNextBtnsActive();
+      prevBtn.removeEventListener("click", scrollPrev, false);
+      nextBtn.removeEventListener("click", scrollNext, false);
+    };
+  };
+
+  const addDotBtnsAndClickHandlers = (
+    emblaApi: EmblaCarouselType,
+    dotsNode: HTMLElement,
+  ): (() => void) => {
+    let dotNodes: HTMLElement[] = [];
+
+    const addDotBtnsWithClickHandlers = (): void => {
+      dotsNode.innerHTML = emblaApi
+        .scrollSnapList()
+        .map(() => '<button class="embla__dot" type="button"></button>')
+        .join("");
+
+      const scrollTo = (index: number): void => {
+        emblaApi.scrollTo(index);
+      };
+
+      dotNodes = Array.from(dotsNode.querySelectorAll(".embla__dot"));
+      dotNodes.forEach((dotNode, index) => {
+        dotNode.addEventListener("click", () => scrollTo(index), false);
+      });
+    };
+
+    const toggleDotBtnsActive = (): void => {
+      const previous = emblaApi.previousScrollSnap();
+      const selected = emblaApi.selectedScrollSnap();
+      dotNodes[previous].classList.remove("embla__dot--selected");
+      dotNodes[selected].classList.add("embla__dot--selected");
+    };
+
+    emblaApi
+      .on("init", addDotBtnsWithClickHandlers)
+      .on("reInit", addDotBtnsWithClickHandlers)
+      .on("init", toggleDotBtnsActive)
+      .on("reInit", toggleDotBtnsActive)
+      .on("select", toggleDotBtnsActive);
+
+    return (): void => {
+      dotsNode.innerHTML = "";
+    };
+  };
+
+  const OPTIONS: EmblaOptionsType = { loop: true };
+
+  const emblaNode = document.querySelector(".embla") as HTMLElement;
+  const viewportNode = emblaNode.querySelector(
+    ".embla__viewport",
+  ) as HTMLElement;
+  const prevBtnNode = emblaNode.querySelector(
+    ".embla__button--prev",
+  ) as HTMLElement;
+
+  const nextBtnNode = emblaNode.querySelector(
+    ".embla__button--next",
+  ) as HTMLElement;
+  const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
+
+  const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+
+  const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+    emblaApi,
+    prevBtnNode,
+    nextBtnNode,
+  );
+  const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+    emblaApi,
+    dotsNode,
+  );
+
+  emblaApi.on("destroy", removePrevNextBtnsClickHandlers);
+  emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
+</script>

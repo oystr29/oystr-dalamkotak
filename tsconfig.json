@@ -1,15 +1,22 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "files": ["./.eslintrc.cjs", "./.prettierrc.mjs"],
-  "include": ["src", "./*.d.ts", "./*.config.ts"],
-  "exclude": ["**/dist"],
+  "extends": "astro/tsconfigs/base",
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
+    "strictNullChecks": true,
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ]
     },
-
-    "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik"
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   }
 }
