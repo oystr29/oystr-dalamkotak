@@ -93,7 +93,11 @@ const projects = collectionProjects.sort(
                             {(data.web || data.repo) && (
                               <div class="flex items-center gap-3">
                                 {data.web && (
-                        <a href={data.web} target="_blank" aria-label={`link web for ${data.name}`}>
+                                  <a
+                                    href={data.web}
+                                    target="_blank"
+                                    aria-label={`link web for ${data.name}`}
+                                  >
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       width="32"
@@ -108,7 +112,11 @@ const projects = collectionProjects.sort(
                                   </a>
                                 )}
                                 {data.repo && (
-                        <a href={data.repo} target="_blank" aria-label={`link github for ${data.name}`}>
+                                  <a
+                                    href={data.repo}
+                                    target="_blank"
+                                    aria-label={`link github for ${data.name}`}
+                                  >
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       width="32"
@@ -136,7 +144,11 @@ const projects = collectionProjects.sort(
 
           <div class="embla__controls">
             <div class="embla__buttons">
-              <button class="embla__button embla__button--prev" type="button" aria-label="previous project in carousel">
+              <button
+                class="embla__button embla__button--prev"
+                type="button"
+                aria-label="previous project in carousel"
+              >
                 <svg
                   width={32}
                   height={32}
@@ -150,7 +162,11 @@ const projects = collectionProjects.sort(
                 </svg>
               </button>
 
-              <button class="embla__button embla__button--next" type="button" aria-label="next project button for the carousel">
+              <button
+                class="embla__button embla__button--next"
+                type="button"
+                aria-label="next project button for the carousel"
+              >
                 <svg class="embla__button__svg" viewBox="0 0 532 532">
                   <path
                     fill="currentColor"
@@ -169,7 +185,11 @@ const projects = collectionProjects.sort(
       class="relative container mx-auto flex items-center justify-center px-4 py-5 pb-20 text-sm sm:px-0 md:text-base"
     >
       <div class="flex items-center gap-4">
-        <a href={"https://github.com/oystr29"} target="_blank">
+        <a
+          href={"https://github.com/oystr29"}
+          target="_blank"
+          aria-label="a link to my github account"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -184,7 +204,11 @@ const projects = collectionProjects.sort(
             ></svg
           >
         </a>
-        <a href={"https://www.instagram.com/oystr29"} target="_blank">
+        <a
+          href={"https://www.instagram.com/oystr29"}
+          target="_blank"
+          aria-label="a link to my instagram account"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -305,7 +329,10 @@ const projects = collectionProjects.sort(
     const addDotBtnsWithClickHandlers = (): void => {
       dotsNode.innerHTML = emblaApi
         .scrollSnapList()
-        .map(() => '<button class="embla__dot" type="button"></button>')
+        .map(
+          (_, i) =>
+            `<button class="embla__dot" type="button" aria-label="dot button carousel number ${i + 1}"></button>`,
+        )
         .join("");
 
       const scrollTo = (index: number): void => {
