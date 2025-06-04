@@ -1,7 +1,6 @@
 export function grayscale(color: string, isGrayscale: boolean = false) {
   if (!isGrayscale) return color;
   const colorsSplit = color.split("");
-  let bit = "64";
 
   // ini #000 bentuknya
   if (colorsSplit.length === 4) {
